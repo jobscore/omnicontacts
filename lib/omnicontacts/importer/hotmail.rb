@@ -54,7 +54,7 @@ module OmniContacts
           contact[:gender] = entry['gender']
           contact[:profile_picture] = image_url(entry['user_id'])
           contact[:email_hashes] = entry['email_hashes']
-          contacts << contact if contact[:name] || contact[:first_name]
+          contacts << contact if (contact[:name] || contact[:first_name]) && contact[:email]
         end
         contacts
       end

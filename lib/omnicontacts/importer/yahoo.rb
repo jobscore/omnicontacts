@@ -105,7 +105,7 @@ module OmniContacts
               contact[:profile_picture] = image_url_from_email(contact[:email])
             end
           end
-          contacts << contact if contact[:name]
+          contacts << contact if contact[:name] && contact[:email]
         end
         contacts.uniq! {|c| c[:email] || c[:profile_picture] || c[:name]}
         contacts
