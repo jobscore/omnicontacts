@@ -173,7 +173,7 @@ module OmniContacts
             contact[:position] = entry['gd$organization'][0]['gd$orgTitle']['$t'] if entry['gd$organization'][0]['gd$orgTitle']
           end
 
-          contacts << contact if contact[:name] && contact[:email]
+          contacts << contact if contact[:name]
         end
         contacts.uniq! {|c| c[:email] || c[:profile_picture] || c[:name]}
         contacts
