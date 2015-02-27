@@ -51,7 +51,8 @@ module OmniContacts
           :client_secret => client_secret,
           :code => code,
           :redirect_uri => encode(redirect_uri),
-          :grant_type => "authorization_code"
+          :grant_type => "authorization_code",
+          :prompt => 'select_account'
         }
       end
 
@@ -78,7 +79,8 @@ module OmniContacts
           :client_id => client_id,
           :client_secret => client_secret,
           :refresh_token => refresh_token,
-          :grant_type => "refresh_token"
+          :grant_type => "refresh_token",
+          :prompt => 'select_account'
         }
 
       end
