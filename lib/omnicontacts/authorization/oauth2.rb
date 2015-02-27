@@ -26,15 +26,16 @@ module OmniContacts
       private
 
       def authorize_url_params
-        prompt = auth_host == "accounts.google.com" ? "auto+select_account" : "auto"
-        to_query_string({
-            :client_id => client_id,
-            :scope => encode(scope),
-            :response_type => "code",
-            :access_type => "online",
-            :approval_prompt => prompt,
-            :redirect_uri => encode(redirect_uri)
-          })
+        params = {
+                    :client_id => client_id,
+                    :scope => encode(scope),
+                    :response_type => "code",
+                    :access_type => "online",
+                    :approval_prompt => "auto",
+                    :redirect_uri => encode(redirect_uri)
+                  }
+        params.merge!(:prompt => "select_account") if auth_host == "accounts.google.com"
+        to_query_string(params)
       end
 
       public
