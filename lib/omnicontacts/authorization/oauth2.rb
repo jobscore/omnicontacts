@@ -26,12 +26,13 @@ module OmniContacts
       private
 
       def authorize_url_params
+        prompt = auth_host == "accounts.google.com" ? "auto+select_account" : "auto"
         to_query_string({
             :client_id => client_id,
             :scope => encode(scope),
             :response_type => "code",
             :access_type => "online",
-            :approval_prompt => "auto",
+            :approval_prompt => prompt,
             :redirect_uri => encode(redirect_uri)
           })
       end
@@ -51,8 +52,7 @@ module OmniContacts
           :client_secret => client_secret,
           :code => code,
           :redirect_uri => encode(redirect_uri),
-          :grant_type => "authorization_code",
-          :prompt => 'select_account'
+          :grant_type => "authorization_code"
         }
       end
 
@@ -79,8 +79,7 @@ module OmniContacts
           :client_id => client_id,
           :client_secret => client_secret,
           :refresh_token => refresh_token,
-          :grant_type => "refresh_token",
-          :prompt => 'select_account'
+          :grant_type => "refresh_token"
         }
 
       end
