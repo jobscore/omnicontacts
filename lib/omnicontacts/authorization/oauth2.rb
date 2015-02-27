@@ -31,10 +31,13 @@ module OmniContacts
                     :scope => encode(scope),
                     :response_type => "code",
                     :access_type => "online",
-                    :approval_prompt => "auto",
                     :redirect_uri => encode(redirect_uri)
                   }
-        params.merge!(:prompt => "select_account") if auth_host == "accounts.google.com"
+        if auth_host == "accounts.google.com"
+          params.merge!(:prompt => "select_account")
+        else
+          params.merge!(:approval_prompt => "auto")
+        end
         to_query_string(params)
       end
 
