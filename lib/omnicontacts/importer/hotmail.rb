@@ -61,7 +61,7 @@ module OmniContacts
 
       def parse_email(emails)
         return nil if emails.nil?
-        emails['preferred'] || emails['account'] || emails['personal'] || emails['business'] || emails['other']
+        emails['account'] || emails['preferred'] || emails['personal'] || emails['business'] || emails['other']
       end
 
       def current_user me
