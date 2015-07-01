@@ -30,6 +30,8 @@ describe OmniContacts::Importer::Yahoo do
                 {"id":806,"type":"name","value":{"givenName":"John","middleName":"","familyName":"Smith"},"editedBy":"OWNER","categories":[]},
                 {"id":33555343,"type":"guid","value":"7ET6MYV2UQ6VR6CBSNMCLFJIVI"},
                 {"id":946,"type":"birthday","value":{"day":"22","month":"2","year":"1952"},"editedBy":"OWNER","categories":[]},
+                {"id":234,"type":"jobTitle","value":"Software Engineer","editedBy":"OWNER","categories":[]},
+                {"id":643,"type":"company","value":"OmniContacts","editedBy":"OWNER","categories":[]},
                 {"id":21, "type":"address", "value":{"street":"1313 Trashview Court\nApt. 13", "city":"Nowheresville", "stateOrProvince":"OK", "postalCode":"66666", "country":"", "countryCode":""}, "editedBy":"OWNER", "flags":["HOME"], "categories":[]}
               ]
             }
@@ -89,6 +91,8 @@ describe OmniContacts::Importer::Yahoo do
       result.first[:city].should eq('Nowheresville')
       result.first[:region].should eq('OK')
       result.first[:postcode].should eq('66666')
+      result.first[:company].should eq('OmniContacts')
+      result.first[:position].should eq('Software Engineer')
       result.first[:relation].should be_nil
     end
 

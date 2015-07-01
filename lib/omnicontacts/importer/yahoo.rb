@@ -95,6 +95,10 @@ module OmniContacts
               contact[:postcode] = value['postalCode']
             when 'birthday'
               contact[:birthday] = birthday_format(field['value']['month'], field['value']['day'],field['value']['year'])
+            when 'company'
+              contact[:company] = field['value']
+            when 'jobTitle'
+              contact[:position] = field['value']
             end
             contact[:first_name], contact[:last_name], contact[:name] = email_to_name(contact[:email]) if contact[:name].nil? && contact[:email]
             # contact[:first_name], contact[:last_name], contact[:name] = email_to_name(yahoo_id) if (yahoo_id && contact[:name].nil? && contact[:email].nil?)
