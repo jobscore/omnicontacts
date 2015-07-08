@@ -93,7 +93,7 @@ module OmniContacts
               contact[:city] = value['city']
               contact[:region] = value['stateOrProvince']
               contact[:postcode] = value['postalCode']
-              contact[:country] = value['country']
+              contact[:country] = value['countryCode']
             when 'birthday'
               contact[:birthday] = birthday_format(field['value']['month'], field['value']['day'],field['value']['year'])
             when 'company'

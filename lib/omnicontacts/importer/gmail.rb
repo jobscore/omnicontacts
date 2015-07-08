@@ -122,7 +122,7 @@ module OmniContacts
             end
             new_address[:city] = address['gd$city']['$t'] if address['gd$city']
             new_address[:region] = address['gd$region']['$t'] if address['gd$region'] # like state or province
-            new_address[:country] = address['gd$country']['code'] if address['gd$country']
+            new_address[:country] = address['gd$country']['code'] || address['gd$country']['$t'] if address['gd$country']
             new_address[:postcode] = address['gd$postcode']['$t'] if address['gd$postcode']
             contact[:addresses] << new_address
           end if entry['gd$structuredPostalAddress']
